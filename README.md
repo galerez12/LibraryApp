@@ -12,7 +12,7 @@ This app is for anyone who love books, wants to be able to be a member in librar
 # MVP 
 
 Features:
-Log-in and register window, watch loans history, faster login with cookies, https, RestAPI.
+Log-in and register window, watch loans history, faster login with cookies, https, RestAPI, Faster searching using TF-IDF algorithm and ZooKeeper, Using NoSQL with MongoDB for faster usage and searching in the databases.
 
 Future Features:
 Read the first few pages online, Books descriptions, Author description, Paying fines online, newsletter.
