@@ -2,7 +2,7 @@
 
 App Review:
 In this Library managment app, you can see all information about your desired books.
-You can register as a member in specific libraries, search for books via book name/auther name/genre/library,
+You can register as a member in specific libraries, search for books via book name/author name/genre/library,
 watch your loans history and loan books online.
 
 App Usage:
@@ -15,7 +15,7 @@ Features:
 Log-in and register window, watch loans history, faster login with cookies, https, RestAPI.
 
 Future Features:
-Read the first few pages online, Books descriptions, Auther description, Paying fines online, newsletter.
+Read the first few pages online, Books descriptions, Author description, Paying fines online, newsletter.
 
 
 # Deployment 
