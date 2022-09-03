@@ -15,7 +15,7 @@ Features:
 Log-in and register window, watch loans history, faster login with cookies, https, RestAPI, Holding a files of books and searching for keywords in the files using TF-IDF algorithm and ZooKeeper, Using NoSQL with MongoDB for faster usage and searching in the databases.
 
 Future Features:
-Read the first few pages online, Books descriptions, Author description, Paying fines online, newsletter.
+Read the first few pages online, books descriptions, author description, paying fines online, newsletter, add new workers.
 
 
 # Deployment 
