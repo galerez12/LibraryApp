@@ -22,6 +22,19 @@ Read the first few pages online, books descriptions, author description, adding 
 
 No need for any special deployments since it is an online page.
 
+# Added stuff
+bootstrap page that we used for our website:
+https://getbootstrap.com/docs/4.5/getting-started/introduction/ 
+
+we also added black-grey background color and white color for the words
+
+
+# How to run the project
+1. do "pip install -r req.txt"
+2. set FLASK_APP=Lib.py
+3. set FLASK_ENV=development
+4. flask run
+
 
 
 
