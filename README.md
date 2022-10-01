@@ -31,9 +31,7 @@ we also added black-grey background color and white color for the words
 
 # How to run the project
 1. do "pip install -r req.txt"
-2. set FLASK_APP=Lib.py
-3. set FLASK_ENV=development
-4. flask run
+2. do "python run.py"
 
 
 
