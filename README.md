@@ -26,12 +26,6 @@ No need for any special deployments since it is an online page.
 bootstrap page that we used for our website:
 https://getbootstrap.com/docs/4.5/getting-started/introduction/ 
 
-we also added black-grey background color and white color for the words
-
-
-# How to run the project
-1. do "pip install -r req.txt"
-2. do "python run.py"
 
 
 
