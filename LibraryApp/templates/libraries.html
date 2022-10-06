@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for library in libraries %}
+        <article class="media content-section">
+            <div class="media-body">
+                <h2>{{ library.libraryName }}</h2>
+                <p class="article-content">Phone Number: {{ library.phoneNumber }}</p>
+                <p class="article-content">Address: {{ library.address }}</p>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

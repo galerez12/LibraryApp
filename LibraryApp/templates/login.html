@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block content %}
+    <!-- class "content-section" is a style in main.css -->
+    <div class="content-section">
+        <!-- That means that when we post this form, it will post that information -->
+        <!-- to the same route that we're currently on. -->
+        <form method="POST" action="">
+            <!-- form.hidden.tag() is adding a CSRF (cross-site request forgery) token -->
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <!-- class="border-bottom mb-4" is from bootstrap -->
+                <legend class="border-bottom mb-4">Log In</legend>
+
+                <div class="form-group">
+                    {{ form.email.label(class="form-control-label") }}
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.password.label(class="form-control-label") }}
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <!-- class="form-check" is a checkbox from Bootstrap-->
+                <div class="form-check">
+                    {{ form.remember(class="form-check-input") }}
+                    {{ form.remember.label(class="form-check-label") }}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                <!-- class="btn btn-outline-info" is from bootstrap -->
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+            <small class="text-muted ml-2">
+                <a href="#">Forgot your password?</a>
+            </small>
+        </form>
+    </div>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            <!-- Notice that in url_for we need to pass the name of the function and the name of the route itself -->
+            Need an account? <a class="ml-2" href="{{ url_for('register') }}">Sign Up</a>
+        </small>
+    </div>
+{% endblock content %}

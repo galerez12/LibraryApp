@@ -1,0 +1,18 @@
+<!-- Since we have repeated code in 'home.html' and 'about.html', we can use heritage. -->
+<!-- We can add another html file with the repeated code and extends it in any file. -->
+<!-- In the 'layout.html' file we have a block that we can replace by adding any content to it. -->
+{% extends "layout.html" %}
+{% block content %}
+    {% for post in posts %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ post.author }}</a>
+                    <small class="text-muted">{{ post.date_posted }}</small>
+                </div>
+                <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+                <p class="article-content">{{ post.content }}</p>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %}  <!-- Writing 'content' isn't needed, but it helps to understand it ends the content block.-->

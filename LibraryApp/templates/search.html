@@ -1,0 +1,50 @@
+<!-- Since we have repeated code in 'home.html' and 'about.html', we can use heritage. -->
+<!-- We can add another html file with the repeated code and extends it in any file. -->
+<!-- In the 'layout.html' file we have a block that we can replace by adding any content to it. -->
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <!-- That means that when we post this form, it will post that information -->
+        <!-- to the same route that we're currently on. -->
+        <form method="POST" action="">
+            <!-- form.hidden.tag() is adding a CSRF (cross-site request forgery) token -->
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <!-- class="border-bottom mb-4" is from bootstrap -->
+                <legend class="border-bottom mb-4">Search Page</legend>
+
+                <div class="form-group">
+                    <h5 class="article-title">Search For:</h5>
+                    {% if form.keyword.errors %}
+                        {{ form.keyword(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.keyword.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.keyword(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <div class="form-group" class="col-md-8">
+                    {% if form.search_by.errors %}
+                        {{ form.search_by(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.search_by.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.search_by(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+            </fieldset>
+            <div class="form-group">
+                <!-- class="btn btn-outline-info" is from bootstrap -->
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+{% endblock content %}  <!-- Writing 'content' isn't needed, but it helps to understand it ends the content block.-->

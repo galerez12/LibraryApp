@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Book Name</th>
+        <th scope="col">Library Name</th>
+        <th scope="col">Author Name</th>
+        <th scope="col">Options</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for book, bookInLibrary in books %}
+    {% include 'includes/books_modals.html' %}
+    <tr>
+        <td>{{ bookInLibrary.id }}</td>
+        <td>{{ book.bookName }}</td>
+        <td>{{ bookInLibrary.library_name }}</td>
+        <td>{{ book.authorName }}</td>
+        <td>
+            <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-LendConfirm-{{ bookInLibrary.id }}">Lend This Book</button>
+        </td>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+{% endblock content %}
