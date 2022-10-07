@@ -13,7 +13,6 @@ lb = Library.query.all()
 @app.route("/")
 @app.route("/home")
 def home():
-    # print(datetime.today().date())
     return render_template('libraries.html', libraries=lb)
 
 
@@ -90,7 +89,6 @@ def libraries():
     return render_template('libraries.html', libraries=lb)
 
 
-# Creating a route for the forms to see how they get converted to HTML.
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()

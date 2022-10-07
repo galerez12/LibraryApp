@@ -1,17 +1,14 @@
-{% extends "layout.html" %}
-{% block content %}
-<table class="table table-hover">
-    <thead>
-    <tr>
-        <th scope="col">Loan ID</th>
-        <th scope="col">ID</th>
-        <th scope="col">Book Name</th>
-        <th scope="col">Library Name</th>
-        <th scope="col">Author Name</th>
-        <th scope="col">Options</th>
-    </tr>
-    </thead>
-    <tbody>
+{% extends "books_layout.html" %}
+{% block headers %}
+    <th scope="col">Loan ID</th>
+    <th scope="col">ID</th>
+    <th scope="col">Book Name</th>
+    <th scope="col">Library Name</th>
+    <th scope="col">Author Name</th>
+    <th scope="col">Options</th>
+{% endblock headers%}
+
+{% block body %}
     {% for book in books %}
     {% include 'includes/ownedBooks_modals.html' %}
     <tr>
@@ -25,7 +22,4 @@
         </td>
     </tr>
     {% endfor %}
-
-    </tbody>
-</table>
-{% endblock content %} 
+{% endblock body%}

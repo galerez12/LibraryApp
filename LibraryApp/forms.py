@@ -18,7 +18,6 @@ class RegistrationForm(FlaskForm):
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
-    # BooleanField - a form class of boolean type.
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
 
