@@ -7,12 +7,11 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required , current_user
 
-lb = Library.query.all()
-
 
 @app.route("/")
 @app.route("/home")
 def home():
+    lb = Library.query.all()
     return render_template('libraries.html', libraries=lb)
 
 
@@ -20,37 +19,23 @@ def home():
 def search():
     form = SearchForm()
     books = db.session.query(Book, BookInLibrary).join(Book)
-    # books = db.session.query(Book).join(BookInLibrary, Book.bookName == BookInLibrary.book_name)
-    # books = db.session.query(Book, BookInLibrary, LoanedBook).join(Book).outerjoin(LoanedBook).filter(or_(LoanedBook.return_date.isnot(None), LoanedBook.loan_id==None))
-    # books = books.query.filter_by(LoanedBook.return_date.isnot(None))
     if form.validate_on_submit():
         search_field = form.search_by.data
         if search_field == 'book':
             books = books.filter_by(bookName=form.keyword.data)
-            # b = BookInLibrary.query.filter_by(book_name=form.keyword.data).first()
             return render_template('books.html', books=books, form=form, lend_book=form)
         elif search_field == 'author':
             books = books.filter_by(authorName=form.keyword.data)
-            # a = Book.query.filter_by(authorName=form.keyword.data)
-            # for c in a:
-            #     b = BookInLibrary.query.filter_by(book_name=c.bookName).first()
-            #     print(b.book.authorName)
             return render_template('books.html', books=books, form=form, lend_book=form)
         elif search_field == 'library':
             books = db.session.query(Book, BookInLibrary).join(BookInLibrary).filter_by(library_name=form.keyword.data)
-            # b = BookInLibrary.query.filter_by(library_name=form.keyword.data)
-            # print(b.book.authorName)
             return render_template('books.html', books=books, form=form, lend_book=form)
         elif search_field == 'genre':
             books = books.filter_by(genre_type=form.keyword.data)
-            # a = Book.query.filter_by(genre_type=form.keyword.data)
-            # for c in a:
-            #     b = BookInLibrary.query.filter_by(book_name=c.bookName).first()
-            #     print(b.book.authorName)
             return render_template('books.html', books=books, form=form, lend_book=form)
 
     if request.method == "POST":
-        loan_books()
+        lend_books()
         return redirect(url_for('home'))
     if form.errors != {}:
         for error in form.errors.values():
@@ -60,7 +45,7 @@ def search():
 
 
 @login_required
-def loan_books():
+def lend_books():
     lend_book = request.form.get('lend_book')
     b = LoanedBook.query.filter_by(book_id=lend_book).filter_by(return_date=None).first()
     if b is None:
@@ -80,13 +65,8 @@ def loan_books():
             db.session.commit()
             flash(f'Lend Book {new_lend_book.b_id.book_name}')
     else:
-        flash('This books is already lend by another member')
+        flash('This book is already lend')
     return redirect(url_for('home'))
-
-
-@app.route("/libraries")
-def libraries():
-    return render_template('libraries.html', libraries=lb)
 
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -118,6 +98,7 @@ def register():
 @login_required
 def register_to_library():
     form = RegisterToLibraryForm()
+    lb = Library.query.all()
     if form.validate_on_submit():
         user1 = current_user
         member = Membership.query.filter_by(member_id=user1.id, library_name=lb.libraryName).first()
