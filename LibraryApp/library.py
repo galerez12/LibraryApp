@@ -178,6 +178,15 @@ def owned_books():
     return render_template('ownedBooks.html', books=b, return_book=form)
 
 
+@app.route('/booksHistory', methods=['GET', 'POST'])
+@login_required
+def books_history():
+    user1 = current_user
+    current_member = Membership.query.filter_by(member_id=user1.id).first()
+    b = LoanedBook.query.filter_by(member_number=current_member.member_id)
+    return render_template('booksHistory.html', books=b)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 
