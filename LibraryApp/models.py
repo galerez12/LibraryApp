@@ -1,8 +1,18 @@
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, SelectField
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import UserMixin
-from init import db, login_manager
+from flask_login import UserMixin, LoginManager
+
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = '0dd67f6b98b0f1b9b45af215f1e0fe28'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///libraries_db.db'  # Config the location of our database.
+db = SQLAlchemy(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
 
 
 # Loading the current user
@@ -52,7 +62,7 @@ class Library(db.Model):
 
     # Representation of the library
     def __repr__(self):
-        return f"Library('{self.libraryName}', '{self.phoneNumber}, {self.address}')"
+        return f"Library('{self.libraryName}', '{self.phoneNumber})"
 
 
 # A class for 'Membership' table

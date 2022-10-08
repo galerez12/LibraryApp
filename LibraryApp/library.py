@@ -1,10 +1,9 @@
 from flask import render_template, url_for, flash, redirect, request
 from forms import RegistrationForm, LoginForm, SearchForm, ReturnBookForm
-from models import User, Library, Membership, Book, LoanedBook, BookInLibrary, RegisterToLibraryForm
+from models import User, Library, Membership, Book, LoanedBook, BookInLibrary, db, app, RegisterToLibraryForm
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user, logout_user, login_required , current_user
-from init import app, db
+from flask_login import login_user, logout_user, login_required, current_user
 
 
 # Route for home page
