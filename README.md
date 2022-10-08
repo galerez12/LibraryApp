@@ -20,11 +20,13 @@ Read the first few pages online, books descriptions, author description, adding 
 
 # Deployment 
 
-No need for any special deployments since it is an online page.
+Go into venv.
 
-# Added stuff
-bootstrap page that we used for our website:
-https://getbootstrap.com/docs/4.5/getting-started/introduction/ 
+Run the command 'pip install -r req.txt'.
+
+Run the command: 'set FLASK_APP = library.py'.
+
+Run the command: 'flask run'.
 
 
 
