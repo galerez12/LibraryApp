@@ -20,10 +20,10 @@ Read the first few pages online, books descriptions, author description, adding 
 
 # Deployment 
 
--Go into venv.
--Run the command 'pip install -r req.txt'.
--Run the command: 'set FLASK_APP = library.py'.
--Run the command: 'flask run'.
+Go into venv.
+Run the command 'pip install -r req.txt'.
+Run the command: 'set FLASK_APP = library.py'.
+Run the command: 'flask run'.
 
 
 
